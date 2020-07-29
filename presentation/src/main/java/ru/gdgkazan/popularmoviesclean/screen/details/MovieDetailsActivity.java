@@ -86,11 +86,10 @@ public class MovieDetailsActivity extends AppCompatActivity {
          *
          * Load movie trailers and reviews and display them
          *
-         * 1) See http://docs.themoviedb.apiary.io/#reference/movies/movieidtranslations/get?console=1
-         * http://docs.themoviedb.apiary.io/#reference/movies/movieidtranslations/get?console=1
+         * 1) See https://developers.themoviedb.org/3/getting-started/introduction
          * for API documentation
-         * To fetch trailers you will want to make a request to the /movie/{id}/videos endpoint
-         * To fetch reviews you will want to make a request to the /movie/{id}/reviews endpoint
+         * To fetch trailers you will want to make a request to the {id}/videos endpoint
+         * To fetch reviews you will want to make a request to the {id}/reviews endpoint
          *
          * 2) Add requests to repository
          *
@@ -103,6 +102,16 @@ public class MovieDetailsActivity extends AppCompatActivity {
          * 6) Handle lifecycle changes any way you like
          *
          * 7) Save trailers and videos to Realm and use cached version when error occurred
+         * 
+         * -----
+         * 
+         * Advanced task:
+         * Add Dagger 2 to the application.
+         * Create 2 lifetime levels (scopes): @PerApplication, @PerActivity.
+         * @PerApplication - dependency lives as long as the application lives.
+         * @PerActivity - dependency lives as long as the activity lives.
+         * Apply DI to as many dependencies as possible (considering scopes).
+         * Form this task as a separate commit.
          */
     }
 
