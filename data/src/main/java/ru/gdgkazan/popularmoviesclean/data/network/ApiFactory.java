@@ -1,6 +1,7 @@
 package ru.gdgkazan.popularmoviesclean.data.network;
 
 import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -53,6 +54,13 @@ public final class ApiFactory {
     private static OkHttpClient buildClient() {
         return new OkHttpClient.Builder()
                 .addInterceptor(new ApiKeyInterceptor())
+                .addInterceptor(httpInterceptor())
                 .build();
+    }
+
+    private static HttpLoggingInterceptor httpInterceptor() {
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        return interceptor;
     }
 }
